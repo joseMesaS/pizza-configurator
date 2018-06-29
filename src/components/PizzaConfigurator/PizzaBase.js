@@ -33,7 +33,7 @@ class PizzaBase extends PureComponent {
         <FormGroup>
           {this.state.options
             .map((radioButton, index) => {
-              return <Radio key={index} value={this.state.options[index]}  name="radioGroup" onChange={this.handleChange}>
+              return <Radio key={index} value={this.state.options[index]}  name="radioGroup1" onChange={this.handleChange}>
                 {pizzaMenu.baseInCm[this.state.options[index]].title}
               </Radio>
             })

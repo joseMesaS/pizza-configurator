@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {updateReceipt} from '../../actions/PizzaConfig'
 import PizzaBase from './PizzaBase'
+import PizzaSauce from './PizzaSauce'
 import { PanelGroup, Panel } from 'react-bootstrap'
 
 class PizzaConfigurator extends PureComponent {
@@ -39,7 +40,7 @@ class PizzaConfigurator extends PureComponent {
             </Panel.Heading>
             <Panel.Body collapsible>
               butcher vice
-              
+              <PizzaSauce/>
             </Panel.Body>
           </Panel>
         </PanelGroup>
