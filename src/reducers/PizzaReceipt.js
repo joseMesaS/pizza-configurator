@@ -11,7 +11,14 @@ const initialEstate = {
 export default function(state = initialEstate, action) {
   switch (action.type) {
   case UPDATE_RECEIPT:
-    return action.payload
+    const copy = {...state}
+    switch (action.payload.type) {
+    case 'pizzaBase':
+      copy.base = action.payload.body
+      return copy
+    default:
+      return state
+    }
   default:
     return state
   }
