@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import ReducerTemplate from './ReducerTemplate'
+import PizzaReceipt from './PizzaReceipt'
 
 
-export default combineReducers({ ReducerTemplate })
+export default combineReducers({ PizzaReceipt })

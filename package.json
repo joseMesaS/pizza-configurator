@@ -1,10 +1,11 @@
 {
-  "name": "clientBoilerplate",
+  "name": "Pizza-Configurator",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
