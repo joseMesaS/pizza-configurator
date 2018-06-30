@@ -22,7 +22,7 @@ class PizzaBase extends PureComponent {
   handleChange = (e) => {
     this.setState({
       selected: e.target.value
-    },()=>{this.props.updateReceipt({type: 'pizzaBase', body: this.state.selected })})
+    },()=>{this.props.updateReceipt({type: 'pizzaBase', body: this.state.selected})})
   }
 
 
@@ -34,7 +34,7 @@ class PizzaBase extends PureComponent {
           {this.state.options
             .map((radioButton, index) => {
               return <Radio key={index} value={this.state.options[index]}  name="radioGroup1" onChange={this.handleChange}>
-                {pizzaMenu.baseInCm[this.state.options[index]].title}
+                {pizzaMenu.baseInCm[this.state.options[index]].title} € {pizzaMenu.baseInCm[this.state.options[index]].price}
               </Radio>
             })
           }

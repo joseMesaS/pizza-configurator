@@ -27,7 +27,7 @@ class ShowReceipt extends PureComponent {
           <li>Toppings: <ul> {this.props.pizzaState.topping !== [] && this.props.pizzaState.topping.map(top=> {return <li key={top}>{top}</li>})} </ul></li>
         </ul>
         <hr/>
-        <h6>Total to Pay: {this.props.pizzaState.total}</h6>
+        <h6>Total to Pay: € {this.props.pizzaState.total}</h6>
       </div>
     )}
 }
