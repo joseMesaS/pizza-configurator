@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {updateReceipt} from '../../actions/PizzaConfig'
 import PizzaBase from './PizzaBase'
 import PizzaSauce from './PizzaSauce'
+import PizzaToppings from './PizzaToppings'
 import { PanelGroup, Panel } from 'react-bootstrap'
 
 class PizzaConfigurator extends PureComponent {
@@ -41,6 +42,15 @@ class PizzaConfigurator extends PureComponent {
             <Panel.Body collapsible>
               butcher vice
               <PizzaSauce/>
+            </Panel.Body>
+          </Panel>
+          <Panel eventKey="3">
+            <Panel.Heading>
+              <Panel.Title toggle>Collapsible Group Item #3</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body collapsible>
+              butcher vice
+              <PizzaToppings/>
             </Panel.Body>
           </Panel>
         </PanelGroup>
