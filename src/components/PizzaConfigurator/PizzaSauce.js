@@ -14,7 +14,7 @@ class PizzaSauce extends PureComponent {
       base: PropTypes.string.isRequired,
       sauce: PropTypes.string.isRequired,
       topping:  PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      turbo: PropTypes.bool.isRequired,
+      turboTax: PropTypes.number.isRequired,
       total: PropTypes.number.isRequired
     }).isRequired
   }
@@ -34,7 +34,7 @@ class PizzaSauce extends PureComponent {
           {this.state.options
             .map((radioButton, index) => {
               return <Radio key={index} value={this.state.options[index]}  name="radioGroup2" onChange={this.handleChange}>
-                {pizzaMenu.sauce[this.state.options[index]].title}
+                {pizzaMenu.sauce[this.state.options[index]].title} + €{pizzaMenu.sauce[this.state.options[index]].price}
               </Radio>
             })
           }

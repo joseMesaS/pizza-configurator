@@ -14,7 +14,7 @@ class PizzaToppings extends PureComponent {
       base: PropTypes.string.isRequired,
       sauce: PropTypes.string.isRequired,
       topping:  PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      turbo: PropTypes.bool.isRequired,
+      turboTax: PropTypes.number.isRequired,
       total: PropTypes.number.isRequired
     }).isRequired
   }
@@ -32,8 +32,6 @@ class PizzaToppings extends PureComponent {
   }
 
   render() {
-    console.log(this.state.options)
-    console.log(this.state.selected)
     return (
       <div>
         <FormGroup>

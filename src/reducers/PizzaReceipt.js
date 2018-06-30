@@ -1,40 +1,42 @@
-import { UPDATE_RECEIPT } from '../actions/PizzaConfig'
+import { PIZZA_BASE, PIZZA_SAUCE, PIZZA_TOPPINGS, TURBO_DELIVERY } from '../actions/PizzaConfig'
 import  pizzaMenu from '../pizzaMenu'
 const initialEstate = {
   base: '',
   sauce: '',
   topping: [],
-  turbo: false,
+  turboTax: 0,
   total: 0
 }
 
 export default function(state = initialEstate, action) {
+  const copy = {...state}
   switch (action.type) {
-  case UPDATE_RECEIPT:
-    const copy = {...state}
-    switch (action.payload.type) {
-    case 'pizzaBase':
-      copy.base = action.payload.body
-      copy.total = ((copy.base !== '') ? pizzaMenu.baseInCm[copy.base].price : 0) +
-      ((copy.sauce !== '') ? pizzaMenu.sauce[copy.sauce].price : 0) +
-      ((copy.topping.length !== 0) ? copy.topping.reduce((acc, cur) => acc + pizzaMenu.toppings[cur],0)  : 0)
-      return copy
-    case 'pizzaSauce':
-      copy.sauce = action.payload.body
-      copy.total = ((copy.base !== '') ? pizzaMenu.baseInCm[state.base].price : 0) +
-      ((copy.sauce !== '') ? pizzaMenu.sauce[copy.sauce].price : 0) +
-      ((copy.topping.length !== 0) ? copy.topping.reduce((acc, cur) => acc + pizzaMenu.toppings[cur],0)  : 0)
-      return copy
-    case 'pizzaTopping':
-      copy.topping = action.payload.body
-      copy.total = ((copy.topping.length !== 0) ? copy.topping.reduce((acc, cur) => acc + pizzaMenu.toppings[cur],0)  : 0)+
-      ((copy.base !== '') ? pizzaMenu.baseInCm[copy.base].price : 0)+
-      ((copy.sauce !== '') ? pizzaMenu.sauce[copy.sauce].price : 0)
-      return copy
-    default:
-      return state
-    }
+  case PIZZA_BASE:
+    copy.base = action.payload
+    copy.total = ((copy.base !== '') ? pizzaMenu.baseInCm[copy.base].price : 0) +
+    ((copy.sauce !== '') ? pizzaMenu.sauce[copy.sauce].price : 0) +
+    ((copy.topping.length !== 0) ? copy.topping.reduce((acc, cur) => acc + pizzaMenu.toppings[cur],0)  : 0)
+    copy.turboTax = copy.total/10
+    return copy
+  case PIZZA_SAUCE:
+    copy.sauce = action.payload
+    copy.total = ((copy.base !== '') ? pizzaMenu.baseInCm[state.base].price : 0) +
+    ((copy.sauce !== '') ? pizzaMenu.sauce[copy.sauce].price : 0) +
+    ((copy.topping.length !== 0) ? copy.topping.reduce((acc, cur) => acc + pizzaMenu.toppings[cur],0)  : 0)
+    copy.turboTax = copy.total/10
+    return copy
+  case PIZZA_TOPPINGS:
+    copy.topping = action.payload
+    copy.total = ((copy.topping.length !== 0) ? copy.topping.reduce((acc, cur) => acc + pizzaMenu.toppings[cur],0)  : 0)+
+    ((copy.base !== '') ? pizzaMenu.baseInCm[copy.base].price : 0)+
+    ((copy.sauce !== '') ? pizzaMenu.sauce[copy.sauce].price : 0)
+    copy.turboTax = copy.total/10
+    return copy
+  case TURBO_DELIVERY:
+    copy.turboTax = copy.total/10
+    return copy
   default:
     return state
   }
+
 }

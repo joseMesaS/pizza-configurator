@@ -14,7 +14,7 @@ class PizzaConfigurator extends PureComponent {
       base: PropTypes.string.isRequired,
       sauce: PropTypes.string.isRequired,
       topping:  PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      turbo: PropTypes.bool.isRequired,
+      turboTax: PropTypes.number.isRequired,
       total: PropTypes.number.isRequired
     }).isRequired
   }
@@ -41,7 +41,7 @@ class PizzaConfigurator extends PureComponent {
               <Panel.Title toggle>Collapsible Group Item #2</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>
-              butcher vice
+
               <PizzaSauce/>
             </Panel.Body>
           </Panel>
@@ -50,7 +50,7 @@ class PizzaConfigurator extends PureComponent {
               <Panel.Title toggle>Collapsible Group Item #3</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>
-              butcher vice
+              Cost is €0.5 per topping.  <small>*only 3 toppings per pizza allowed</small>
               <PizzaToppings/>
             </Panel.Body>
           </Panel>
