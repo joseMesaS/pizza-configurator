@@ -29,17 +29,7 @@ class PizzaToppings extends PureComponent {
         selected: [...this.state.selected].filter(element =>  element !== e.target.value )
       },()=>{this.props.updateReceipt({type: 'pizzaTopping', body: this.state.selected })})
     }
-
-
-
-
   }
-
-  handleValidation = () =>{
-
-
-  }
-
 
   render() {
     console.log(this.state.options)

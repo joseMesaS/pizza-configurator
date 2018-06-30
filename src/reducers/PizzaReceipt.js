@@ -19,6 +19,9 @@ export default function(state = initialEstate, action) {
     case 'pizzaSauce':
       copy.sauce = action.payload.body
       return copy
+    case 'pizzaTopping':
+      copy.topping = action.payload.body
+      return copy
     default:
       return state
     }

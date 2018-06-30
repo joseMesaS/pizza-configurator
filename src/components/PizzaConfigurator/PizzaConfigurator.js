@@ -5,6 +5,7 @@ import {updateReceipt} from '../../actions/PizzaConfig'
 import PizzaBase from './PizzaBase'
 import PizzaSauce from './PizzaSauce'
 import PizzaToppings from './PizzaToppings'
+import ShowReceipt from './ShowReceipt'
 import { PanelGroup, Panel } from 'react-bootstrap'
 
 class PizzaConfigurator extends PureComponent {
@@ -54,6 +55,7 @@ class PizzaConfigurator extends PureComponent {
             </Panel.Body>
           </Panel>
         </PanelGroup>
+        <ShowReceipt/>
       </div>)
   }
 }
