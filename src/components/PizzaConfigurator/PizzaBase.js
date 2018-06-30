@@ -2,13 +2,29 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {updateReceipt} from '../../actions/PizzaConfig'
-import { FormGroup, Radio } from 'react-bootstrap'
+
 import pizzaMenu from '../../pizzaMenu'
+
+import { withStyles } from '@material-ui/core/styles';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+  },
+  formControl: {
+    margin: theme.spacing.unit * 3,
+  },
+  group: {
+    margin: `${theme.spacing.unit}px 0`,
+  },
+});
 
 class PizzaBase extends PureComponent {
   state = {options: Object.keys(pizzaMenu.baseInCm), selected: ''}
-
-
   static propTypes = {
     pizzaState: PropTypes.shape({
       base: PropTypes.string.isRequired,
@@ -26,19 +42,23 @@ class PizzaBase extends PureComponent {
   }
 
 
+
   render() {
+    const { classes } = this.props;
 
     return (
-      <div>
-        <FormGroup>
-          {this.state.options
-            .map((radioButton, index) => {
-              return <Radio key={index} value={this.state.options[index]}  name="radioGroup1" onChange={this.handleChange}>
-                {pizzaMenu.baseInCm[this.state.options[index]].title} €{pizzaMenu.baseInCm[this.state.options[index]].price}
-              </Radio>
-            })
-          }
-        </FormGroup>
+      <div className={classes.root}>
+        <FormControl component="fieldset" required className={classes.formControl}>
+          <RadioGroup aria-label="gender" name="gender1" className={classes.group} value={this.state.selected}
+            onChange={this.handleChange} >
+            {this.state.options
+              .map((radioButton, index) => {
+                return <FormControlLabel key={index} value={this.state.options[index]} control={<Radio />} name="radioGroup1"
+                  label={pizzaMenu.baseInCm[this.state.options[index]].title +'€'+ pizzaMenu.baseInCm[this.state.options[index]].price}/>
+              })
+            }
+          </RadioGroup>
+        </FormControl>
       </div>
     )}
 }
@@ -48,5 +68,5 @@ const mapStateToProps = function (state) {
     pizzaState: state.PizzaReceipt
   }
 }
-
-export default connect(mapStateToProps, { updateReceipt })(PizzaBase)
+const appWstyles = withStyles(styles)(PizzaBase)
+export default connect(mapStateToProps, { updateReceipt })(appWstyles)

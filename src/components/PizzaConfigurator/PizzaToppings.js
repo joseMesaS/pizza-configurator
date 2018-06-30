@@ -2,11 +2,18 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {updateReceipt} from '../../actions/PizzaConfig'
-import { FormGroup, Checkbox } from 'react-bootstrap'
 import pizzaMenu from '../../pizzaMenu'
 
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+
 class PizzaToppings extends PureComponent {
-  state = {options: Object.keys(pizzaMenu.toppings), selected: []}
+  state = {options: Object.keys(pizzaMenu.toppings), selected: [], gilad: true,
+    jason: false,
+    antoine: true,}
 
 
   static propTypes = {
@@ -31,18 +38,25 @@ class PizzaToppings extends PureComponent {
     }
   }
 
+
+
   render() {
     return (
       <div>
-        <FormGroup>
-          {this.state.options
-            .map((checkButton, index) => {
-              return <Checkbox key={index} value={this.state.options[index]}  name="radioGroup1" onChange={this.handleChange} disabled={this.state.selected.length>=3 && this.state.selected.indexOf(checkButton) === -1}>
-                {checkButton}
-              </Checkbox>
-            })
-          }
-        </FormGroup>
+        <FormControl component="fieldset">
+          <FormGroup>
+            {this.state.options
+              .map((checkButton, index) => {
+                return <FormControlLabel key={checkButton} control={ <Checkbox checked={this.state.selected.indexOf(checkButton) !== -1} onChange={this.handleChange} value={this.state.options[index]} disabled={this.state.selected.length>=3 && this.state.selected.indexOf(checkButton) === -1}/> }
+                  label={checkButton}
+                />
+              })
+            }
+          </FormGroup>
+          <FormHelperText>*You can only choose 3 toppings per pizza.</FormHelperText>
+        </FormControl>
+
+
       </div>
     )}
 }
