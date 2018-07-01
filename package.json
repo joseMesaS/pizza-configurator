@@ -22,5 +22,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-imports": "^1.5.0"
   }
 }

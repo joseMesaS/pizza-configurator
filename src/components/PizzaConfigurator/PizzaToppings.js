@@ -3,18 +3,11 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {updateReceipt} from '../../actions/PizzaConfig'
 import pizzaMenu from '../../pizzaMenu'
+import {FormControl, FormGroup, FormControlLabel, FormHelperText, Checkbox} from '@material-ui/core'
 
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Checkbox from '@material-ui/core/Checkbox';
 
 class PizzaToppings extends PureComponent {
-  state = {options: Object.keys(pizzaMenu.toppings), selected: [], gilad: true,
-    jason: false,
-    antoine: true,}
-
+  state = {options: Object.keys(pizzaMenu.toppings), selected: []}
 
   static propTypes = {
     pizzaState: PropTypes.shape({
@@ -38,8 +31,6 @@ class PizzaToppings extends PureComponent {
     }
   }
 
-
-
   render() {
     return (
       <div>
@@ -47,7 +38,12 @@ class PizzaToppings extends PureComponent {
           <FormGroup>
             {this.state.options
               .map((checkButton, index) => {
-                return <FormControlLabel key={checkButton} control={ <Checkbox checked={this.state.selected.indexOf(checkButton) !== -1} onChange={this.handleChange} value={this.state.options[index]} disabled={this.state.selected.length>=3 && this.state.selected.indexOf(checkButton) === -1}/> }
+                return <FormControlLabel
+                  key={checkButton}
+                  control={ <Checkbox checked={this.state.selected.indexOf(checkButton) !== -1}
+                    onChange={this.handleChange}
+                    value={this.state.options[index]}
+                    disabled={this.state.selected.length>=3 && this.state.selected.indexOf(checkButton) === -1}/> }
                   label={checkButton}
                 />
               })
@@ -55,8 +51,6 @@ class PizzaToppings extends PureComponent {
           </FormGroup>
           <FormHelperText>*You can only choose 3 toppings per pizza.</FormHelperText>
         </FormControl>
-
-
       </div>
     )}
 }

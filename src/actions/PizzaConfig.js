@@ -1,4 +1,3 @@
-export const UPDATE_RECEIPT = 'UPDATE_RECEIPT'
 export const PIZZA_BASE = 'PIZZA_BASE'
 export const PIZZA_SAUCE = 'PIZZA_SAUCE'
 export const PIZZA_TOPPINGS = 'PIZZA_TOPPINGS'

@@ -8,7 +8,7 @@ const initialEstate = {
   total: 0
 }
 
-export default function(state = initialEstate, action) {
+const PizzaReceipt = (state = initialEstate, action) => {
   const copy = {...state}
   switch (action.type) {
   case PIZZA_BASE:
@@ -38,5 +38,6 @@ export default function(state = initialEstate, action) {
   default:
     return state
   }
-
 }
+
+export default PizzaReceipt

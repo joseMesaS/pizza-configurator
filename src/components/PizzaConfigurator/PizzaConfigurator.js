@@ -6,15 +6,11 @@ import PizzaBase from './PizzaBase'
 import PizzaSauce from './PizzaSauce'
 import PizzaToppings from './PizzaToppings'
 import ShowReceipt from './ShowReceipt'
-
-
 import { withStyles } from '@material-ui/core/styles'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import Typography from '@material-ui/core/Typography'
+import {ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Typography } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import './PizzaConfigurator.css'
+
 const styles = theme => ({
   root: {
 
@@ -48,7 +44,6 @@ class PizzaConfigurator extends PureComponent {
     }).isRequired
   }
 
-
   handleChange = panel => (event, expanded) => {
     this.setState({
       expanded: expanded ? panel : false,
@@ -60,7 +55,6 @@ class PizzaConfigurator extends PureComponent {
     const { expanded } = this.state;
     return (
       <div className='content'>
-
         <div className={classes.root}>
           <h1>Pizza Configurator</h1>
           <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
@@ -69,9 +63,7 @@ class PizzaConfigurator extends PureComponent {
               <Typography className={classes.secondaryHeading}>chose the size of your pizzas base</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-
               <PizzaBase/>
-
             </ExpansionPanelDetails>
           </ExpansionPanel>
           <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
@@ -80,9 +72,7 @@ class PizzaConfigurator extends PureComponent {
               <Typography className={classes.secondaryHeading}>chose your sauce</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-
               <PizzaSauce/>
-
             </ExpansionPanelDetails>
           </ExpansionPanel>
           <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChange('panel3')}>
@@ -91,13 +81,10 @@ class PizzaConfigurator extends PureComponent {
               <Typography className={classes.secondaryHeading}>Cost is €0.5 per topping. *only 3 toppings per pizza allowed</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-
               <PizzaToppings/>
-
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </div>
-
         <ShowReceipt />
       </div>)
   }
@@ -108,5 +95,5 @@ const mapStateToProps = function (state) {
     pizzaState: state.PizzaReceipt
   }
 }
-const appWstyles = withStyles(styles)(PizzaConfigurator)
-export default connect(mapStateToProps, { updateReceipt })(appWstyles)
+
+export default connect(mapStateToProps, { updateReceipt })(withStyles(styles)(PizzaConfigurator))
